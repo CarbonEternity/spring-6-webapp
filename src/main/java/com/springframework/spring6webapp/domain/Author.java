@@ -15,6 +15,9 @@ public class Author {
     private String firstName;
     private String lastName;
 
+    // On the target side, we only have to provide the name of the field (authors from Book class), which maps the relationship.
+    // Since a many-to-many relationship doesn’t have an owner side in the database,
+    // we could configure the join table in the Author class and reference it from the Book class.
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 

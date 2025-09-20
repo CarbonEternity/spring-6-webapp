@@ -18,7 +18,7 @@ public class Publisher {
     private String zip;
 
     @OneToMany(mappedBy ="publisher")
-    private Set<Book> books;
+    private Set<Book> books; // One publisher can have many books
 
     public Long getId() {
         return id;

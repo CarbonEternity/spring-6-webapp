@@ -16,7 +16,7 @@ public class Book {
     private String isbn;
 
     @ManyToOne
-    private Publisher publisher;
+    private Publisher publisher; // Many books can have one publisher
 
     public Publisher getPublisher() {
         return publisher;
@@ -26,6 +26,11 @@ public class Book {
         this.publisher = publisher;
     }
 
+    // Since both sides (author, book) should be able to reference the other,
+    // we need to create a separate table to hold the foreign keys. Such a table is called a join table.
+    // In a join table, the combination of the foreign keys will be its composite primary key.
+    // The "joinColumn" attribute will connect to the owner side of the relationship, and the "inverseJoinColumn" to the other side.
+    // The owner side is where we configure the relationship
     @ManyToMany
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
